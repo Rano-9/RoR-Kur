@@ -1,16 +1,16 @@
-# fly.toml app configuration file generated for ratebeer-weathered-snowflake-2399 on 2025-03-11T10:42:41+02:00
+# fly.toml app configuration file generated for ratebeer-silent-waterfall-5508 on 2025-03-11T11:04:43+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'ratebeer-weathered-snowflake-2399'
+app = 'ratebeer-silent-waterfall-5508'
 primary_region = 'ams'
 console_command = '/rails/bin/rails console'
 
 [build]
 
 [deploy]
-  release_command = './bin/rails db:prepare'
+  release_command = "./bin/rails db:prepare"
 
 [http_service]
   internal_port = 3000
