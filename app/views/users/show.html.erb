@@ -42,6 +42,11 @@
     <%end%>
 
 </div>
+<div>
+  <p> Favorite Style is: <%=@user.favorite_style%>
+
+  <p> Favorite Brewery is: <%=@user.favorite_brewery%>
+</div>
 
 <% if @user == current_user %>
 <div>
