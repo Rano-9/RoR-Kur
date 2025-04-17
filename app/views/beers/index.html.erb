@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Beers</h1>
-
+<h1>Beer listing</h1>
+<p>Number of beers: <%= Beer.count%></p>
 <div id="beers">
   <% @beers.each do |beer| %>
     <p>

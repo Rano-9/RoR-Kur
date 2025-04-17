@@ -30,22 +30,34 @@
 <div>
   
     <% if @user.memberships.count != 0%>
-    <p>
+      <p>
       Belongs to <%=pluralize(@user.memberships.count,"beer club")%>,  
       <ul>
         <%@user.memberships.each do |member|%>
         <li> <%= member.to_s%>
         <%end%>
       </ul>
-
-    </p>
+      </p>
+    <% else%>
+      <p><%=@user.username%> does not belong to any club</p>
+    
     <%end%>
 
 </div>
 <div>
-  <p> Favorite Style is: <%=@user.favorite_style%>
+  
+  <%if @user.favorite_style%>
+  <p> Favorite style is: <%=@user.favorite_style%>
+  <%else%>
+    <p><%=@user.username%> does not have favorite style </p>
+  <%end%>
+  
+  <%if @user.favorite_brewery%>
+    <p> Favorite brewery is: <%=@user.favorite_brewery%>
+  <%else%>
+    <p><%=@user.username%> does not have favorite brewery </p>
+  <%end%>
 
-  <p> Favorite Brewery is: <%=@user.favorite_brewery%>
 </div>
 
 <% if @user == current_user %>

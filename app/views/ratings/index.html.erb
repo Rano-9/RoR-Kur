@@ -1,8 +1,8 @@
 <h2>List of ratings</h2>
-
-<ul>
+<p>Number of ratings: <%= Rating.count%> </p>
+<ul name="ratings">
   <% @ratings.each do |rating| %>
-    <li> <%= rating.to_s %> <%= link_to rating.user.username , rating.user %></li>
+    <li id="<%= rating.id%>"> <%= rating.to_s %> <%= link_to rating.user.username , rating.user %></li>
   <% end %>
 </ul>
 <p>
