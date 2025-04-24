@@ -954,6 +954,7 @@
           1,
           1,
           1,
+          1,
           null,
           null,
           1,
@@ -1037,9 +1038,14 @@
           1,
           null,
           1,
-          159,
+          171,
           null,
-          106,
+          111,
+          null,
+          null,
+          1,
+          4,
+          null,
           null,
           null
         ]
@@ -1257,14 +1263,6 @@
           0,
           null,
           null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
           null
         ]
       },
@@ -1324,6 +1322,7 @@
       },
       "/home/esakarvo/rubyOnRails/ratebeer/app/controllers/beer_clubs_controller.rb": {
         "lines": [
+          0,
           0,
           0,
           null,
@@ -1463,6 +1462,6 @@
         }
       }
     },
-    "timestamp": 1744897909
+    "timestamp": 1745499779
   }
 }

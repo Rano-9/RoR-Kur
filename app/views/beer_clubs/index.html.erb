@@ -11,4 +11,7 @@
   <% end %>
 </div>
 
-<%= link_to "New beer club", new_beer_club_path %>
+
+<% if not current_user.nil? %>
+  <%= link_to "New beer club", new_beer_club_path %>
+<%end%>
