@@ -2,7 +2,7 @@ require 'rails_helper'
 
 include Helpers
 
-describe "User" do
+describe "User page" do
   let!(:user) {FactoryBot.create :user}
   
 
@@ -54,7 +54,8 @@ describe "User" do
     it "Has different favorites when rating one beer higher" do
       FactoryBot.create :rating, user:user
       brewery = FactoryBot.create :brewery, name: "KOFF"
-      beer = FactoryBot.create :beer, style: "IPA", brewery:brewery
+      style = FactoryBot.create :style, name: "IPA"
+      beer = FactoryBot.create :beer, style:style, brewery:brewery
       FactoryBot.create :rating, user:user, score: 20, beer:beer
       
       visit users_path

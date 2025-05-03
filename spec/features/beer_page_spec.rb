@@ -3,6 +3,7 @@ require 'rails_helper'
 describe "Beer page" do
   
   before (:each) do
+    FactoryBot.create :style
     FactoryBot.create :user
     FactoryBot.create :brewery
   end
@@ -32,7 +33,7 @@ describe "Beer page" do
     visit new_beer_path
 
     fill_in("beer_name", with: "IPAha")
-    select('IPA', from: 'beer[style]')
+    select('Lager', from: 'beer[style_id]')
     select('anonymous', from: 'beer[brewery_id]')
 
     expect{
@@ -48,7 +49,7 @@ describe "Beer page" do
     visit new_beer_path
 
     fill_in("beer_name", with: "")
-    select('IPA', from: 'beer[style]')
+    select('Lager', from: 'beer[style_id]')
     select('anonymous', from: 'beer[brewery_id]')
 
     click_button "Create Beer"

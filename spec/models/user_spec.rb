@@ -72,6 +72,13 @@ RSpec.describe User, type: :model do
 
   describe "Favorite style" do
     
+    before (:each) do
+      style1 = FactoryBot.create :style
+      style2 = FactoryBot.create :style, name: "NOT IPA"
+      style3 = FactoryBot.create :style, name: "IPA"
+      
+    end
+
     it "method exists" do
       user = FactoryBot.create(:user)
       expect(user).to respond_to(:favorite_style)
@@ -81,31 +88,32 @@ RSpec.describe User, type: :model do
       user = FactoryBot.create(:user)
       create_beers_with_many_ratings({user: user}, 10)
 
-      expect(user.favorite_style).to eq("Lager")
+      expect(user.favorite_style.name).to eq("Lager")
     end
 
     it "gives favorite_style from 2 rated beers" do
       user = FactoryBot.create(:user)
       create_beer_with_rating({user: user}, 10)
-      beer = FactoryBot.create(:beer, style: "Not_lager")
+      style4 = FactoryBot.create :style, name: "Not_lager"
+      beer = FactoryBot.create(:beer, style: style4)
       create_beer_with_rating_style({user: user, beer: beer}, 50)
-      expect(user.favorite_style).to eq("Not_lager")
+      expect(user.favorite_style.name).to eq("Not_lager")
     end
 
     it "gives favorite_style from highest average rated beers" do
 
       user = FactoryBot.create(:user)
       create_beers_with_many_ratings({user: user}, 2,50,50,50) # average 41.66
-
-      beer = FactoryBot.create(:beer, style: "really no lager")
+      style = FactoryBot.create :style, name: "really no lager"
+      beer = FactoryBot.create(:beer, style: style)
       create_beers_with_many_ratings_style({user: user, beer: beer}, 3,50,50,40) # average 39
-
-      beer = FactoryBot.create(:beer, style: "really not lager")
+      style = FactoryBot.create :style, name: "really not lager"
+      beer = FactoryBot.create(:beer, style: style)
       create_beers_with_many_ratings_style({user: user, beer: beer}, 1,50,50,50) # average 39.8
-
-      beer = FactoryBot.create(:beer, style: "Not_lager")
+      style = FactoryBot.create :style, name: "Not_lager"
+      beer = FactoryBot.create(:beer, style: style)
       create_beers_with_many_ratings_style({user: user, beer: beer}, 50,50,50,1) # average 37,75
-      expect(user.favorite_style).to eq("Lager")
+      expect(user.favorite_style.name).to eq("Lager")
     end
 
   end

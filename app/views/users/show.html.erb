@@ -4,28 +4,25 @@
   <p>
     <strong>Username:</strong>
     <%= @user.username %>
-    <% if @user.ratings.count != 0 %>
-    <p>
-      <%=@user.username %> has made <%=pluralize(@user.ratings.count,"rating")%>, average rating <%=@user.average_rating%>
-    </p>
     
-    <strong>ratings</strong>
-
-    <ul>
-     <% @user.ratings.each do |rating| %>
-        <li><%= "#{rating.to_s}" %>
-          <% if @user == current_user %>
-            <%= link_to "Delete", rating, data: {turbo_method: :delete} %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-
-    <% else %>
-    has not made any ratings
-    <% end %>
-
+    
   </p>
+</div>
+
+<div>
+
+  <%if @user.favorite_style%>
+  <p> Favorite style is: <%=@user.favorite_style.name%>
+  <%else%>
+    <p><%=@user.username%> does not have favorite style </p>
+  <%end%>
+  
+  <%if @user.favorite_brewery%>
+    <p> Favorite brewery is: <%=@user.favorite_brewery%>
+  <%else%>
+    <p><%=@user.username%> does not have favorite brewery </p>
+  <%end%>
+
 </div>
 <div>
   
@@ -45,19 +42,28 @@
 
 </div>
 <div>
-  
-  <%if @user.favorite_style%>
-  <p> Favorite style is: <%=@user.favorite_style%>
-  <%else%>
-    <p><%=@user.username%> does not have favorite style </p>
-  <%end%>
-  
-  <%if @user.favorite_brewery%>
-    <p> Favorite brewery is: <%=@user.favorite_brewery%>
-  <%else%>
-    <p><%=@user.username%> does not have favorite brewery </p>
-  <%end%>
+  <p>
+    <strong>ratings</strong>
 
+    <ul>
+    <% if @user.ratings.count != 0 %>
+    <p>
+      <%=@user.username %> has made <%=pluralize(@user.ratings.count,"rating")%>, average rating <%=@user.average_rating%>
+    </p>
+     <% @user.ratings.each do |rating| %>
+        <li><%= "#{rating.to_s}" %>
+          <% if @user == current_user %>
+            <%= link_to "Delete", rating, data: {turbo_method: :delete} %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+
+    <% else %>
+    has not made any ratings
+    <% end %>
+
+  </p>
 </div>
 
 <% if @user == current_user %>
