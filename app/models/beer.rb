@@ -11,6 +11,11 @@ class Beer < ApplicationRecord
   has_many :ratings, dependent: :destroy
   has_many :raters, -> { distinct }, through: :ratings, source: :user
 
+  #def self.top(n)
+  #  list = self.all.sort_by{ |b| -b.ratings.average(:score)}
+  #end
+  
+
   def average
     if ratings.count == 0
       return 0

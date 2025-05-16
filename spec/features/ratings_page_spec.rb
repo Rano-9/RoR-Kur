@@ -49,4 +49,24 @@ describe "Rating" do
     
   end
 
+  describe "Styling:" do
+    
+    it "Best 3 beers are empty" do
+      
+    end
+
+    it "Shows best 3 beers average rating" do
+      
+    end
+
+    it "Shows latest rating" do
+      
+    end
+
+    it "Shows last 5 ratings" do
+      
+    end
+
+  end
+
 end

@@ -1,14 +1,24 @@
-<p style="color: green"><%= notice %></p>
+ 
 
 <h1>Users</h1>
 
-<div id="users">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Joined</th>
+      <th scope="col">Ratings given</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
+    <tr>
+      <td><%= user.username%></td>
+      <td><%= user.created_at.year%></td>
+      <td><%= user.ratings.count%></td>
+      <td><%= link_to "User page", user, class:'btn btn-primary btn-sm'%></td>
+    </tr>
   <% end %>
-</div>
-
+  </tbody>
+</table>
 <%= link_to "New user", new_user_path %>

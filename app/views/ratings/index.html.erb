@@ -1,9 +1,38 @@
 <h2>List of ratings</h2>
 <p>Number of ratings: <%= Rating.count%> </p>
-<ul name="ratings">
-  <% @ratings.each do |rating| %>
-    <li id="<%= rating.id%>"> <%= rating.to_s %> <%= link_to rating.user.username , rating.user %></li>
+
+<h5>Most active users</h5>
+<%if not @beer.nil?%>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">number of ratings</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @beers.each do |beer| %>
+    <tr>
+      <td><%= link_to beer.name, beer%></td>
+      <td><%= link_to beer.style.name, beer.style%></td>
+      <td><%= link_to beer.brewery.name, beer.brewery%></td>
+      <td><%= beer.average.round(2)%></td>
+    </tr>
   <% end %>
+  </tbody>
+</table>
+<%end%>
+
+<%if not Rating.last.nil?%>
+<p>Latest rating for: <strong><%= Rating.last.beer%></strong> | from: <strong><%= Rating.last.user%></strong></p>
+<%end%>
+<h5>Recent ratings</h5>
+<ul name="ratings">
+
+  <% @ratings.recent.each do |rating| %>
+    <li id="<%= rating.id%>"> <%= rating.to_s %> | from: <%= link_to rating.user.username , rating.user %></li>
+  <% end %>
+
 </ul>
 <p>
-   <%= link_to "Make a new ratings", new_rating_path%>
+   <%= link_to "Make a new rating", new_rating_path%>

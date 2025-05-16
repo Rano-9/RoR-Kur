@@ -1,32 +1,20 @@
-<%= form_with(model: beer_club) do |form| %>
-  <% if beer_club.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(beer_club.errors.count, "error") %> prohibited this beer_club from being saved:</h2>
 
-      <ul>
-        <% beer_club.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+ <%= form_with(model: beer_club) do |form| %>
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <%= form.text_field :name%>
+    <div id="nameHelp" class="form-text">We'll never share your beerclub name with anyone else.</div>
   </div>
 
-  <div>
-    <%= form.label :founded, style: "display: block" %>
-    <%= form.number_field :founded %>
+  <div class="mb-3">
+    <label for="year" class="form-label">Founded</label>
+    <%= form.number_field :founded%>
   </div>
 
-  <div>
-    <%= form.label :city, style: "display: block" %>
-    <%= form.text_field :city %>
+  <div class="mb-3">
+    <label for="City" class="form-label">City</label>
+    <%= form.text_field :city%>
   </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+<%end%>
